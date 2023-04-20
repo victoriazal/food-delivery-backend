@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Pad Thai",
+    "shortDescription": "Sweet, Sour, Spicy, Noodles",
+    "about": "Pad Thai is a stir-fried rice noodle dish. It is made with soaked dried rice noodles, which are stir-fried with eggs, tofu, and shrimp, and flavored with tamarind pulp, fish sauce, dried shrimp, garlic, and chili pepper.",
+    "rating": 4.5,
+    "time": 25,
+    "price": 9.99,
+    "image": "pad-thai.png"
+  },
+  {
+    "id": 2,
+    "name": "Kung Pao Chicken",
+    "shortDescription": "Spicy, Salty, Peanuts, Chicken",
+    "about": "Kung Pao Chicken is a spicy, stir-fried Chinese dish made with chicken, peanuts, vegetables, and chili peppers. The dish originated in the Sichuan province of China and is known for its bold flavors and fiery taste.",
+    "rating": 4,
+    "time": 30,
+    "price": 12.99,
+    "image": "Kung-Pao-Chi.png"
+  },
+  {
+    "id": 3,
+    "name": "Bibimbap",
+    "shortDescription": "Colorful, Vegetables, Rice, Spicy",
+    "about": "Bibimbap is a Korean dish that literally means 'mixed rice'. It is a bowl of warm rice topped with sautéed vegetables, chili paste, soy sauce, and a fried egg.",
+    "rating": 4.5,
+    "time": 20,
+    "price": 10.99,
+    "image": "bibimbap.png"
+  },
+  {
+    "id": 4,
+    "name": "Green Curry",
+    "shortDescription": "Coconut, Spicy, Sweet, Chicken",
+    "about": "Green Curry is a Thai curry made with green curry paste, coconut milk, chicken, and vegetables. The dish gets its bright green color from the combination of green chilies, coriander, and basil used in the curry paste.",
+    "rating": 4,
+    "time": 35,
+    "price": 13.99,
+    "image": "green-curry.png"
+  },
+  {
+    "id": 5,
+    "name": "Sushi",
+    "shortDescription": "Raw, Fish, Rice, Soy Sauce",
+    "about": "Sushi is a Japanese dish that typically consists of small rolls or pieces of raw fish or seafood served on top of seasoned rice. The dish is usually accompanied by pickled ginger, wasabi, and soy sauce.",
+    "rating": 5,
+    "time": 15,
+    "price": 16.99,
+    "image": "sushi.png"
+  },
+    {
+      "id": 6,
+      "name": "Baozi",
+      "shortDescription": "Soft, Steamed, Buns",
+      "about": "Baozi, also known as steamed buns, are a popular Chinese snack made with a soft, fluffy dough and filled with meat, vegetables, or sweet fillings. They are typically steamed and served hot, and can be found in a variety of shapes and sizes.",
+      "rating": 4.5,
+      "time": 20,
+      "price": 3.99,
+      "image": "baozi.png"
+    },
+    {
+      "id": 7,
+      "name": "Ramen",
+      "shortDescription": "Savory, Noodles, Broth, Pork",
+      "about": "Ramen is a Japanese dish that consists of Chinese-style wheat noodles served in a meat or fish-based broth, often flavored with soy sauce or miso. It is typically topped with sliced pork, green onions, and other ingredients such as eggs or seaweed.",
+      "rating": 4,
+      "time": 30,
+      "price": 11.99,
+      "image": "ramen.png"
+    },
+    {
+      "id": 8,
+      "name": "Beef Bulgogi",
+      "shortDescription": "Sweet, Savory, Grilled, Beef",
+      "about": "Beef bulgogi is a Korean dish made with thinly sliced marinated beef that is grilled or pan-fried. The beef is marinated in a mixture of soy sauce, sugar, garlic, sesame oil, and other seasonings, which gives it a sweet and savory flavor. ",
+      "rating": 4.5,
+      "time": 25,
+      "price": 14.99,
+      "image": "beef-bulgog.png"
+    },
+    {
+      "id": 9,
+      "name": "Tom Yum Soup",
+      "shortDescription": "Sour, Spicy, Seafood, Soup",
+      "about": "Tom Yum Soup is a spicy and sour soup that is commonly found in Thailand and other Southeast Asian countries. It is typically made with shrimp or other seafood, mushrooms, lemongrass, galangal, chili peppers, and lime juice.",
+      "rating": 4,
+      "time": 20,
+      "price": 8.99,
+      "image": "tom-yum.png"
+    },
+    {
+      "id": 10,
+      "name": "Pho",
+      "shortDescription": " Noodles, Beef, Broth",
+      "about": "Pho is a Vietnamese soup that is made with beef broth, rice noodles, herbs, and beef or chicken. The soup is typically served with bean sprouts, lime wedges, and chili peppers on the side, which allows diners to customize the flavor to their liking. ",
+      "rating": 4.5,
+      "time": 35,
+      "price": 12.99,
+      "image": "Pho.png"
+    }
+]

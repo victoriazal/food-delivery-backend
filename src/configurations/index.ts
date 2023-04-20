@@ -8,6 +8,7 @@ export default () => ({
   entities: [/*...*/],
   migrations: [/*...*/],
   migrationsTableName: "custom_migration_table",
-  secret_jwt: process.env.SECRET,
+  secret_jwt: process.env.JWT_ACCESS_SECRET,
+  secret_refresh_jwt: process.env.JWT_REFRESH_SECRET,
   expire_jwt: process.env.EXPIRE_JWT
 })

@@ -1,5 +1,6 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { CreateUserDto } from '../user/dto/createUser.dto';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/guards/jwt-guard';
+import { CreateUserDto } from '../user/dto/user.dto';
 import { UserLoginDto } from '../user/dto/userLogin.dto';
 import { AuthService } from './auth.service';
 
@@ -16,4 +17,16 @@ export class AuthController {
   login(@Body() dto:UserLoginDto): Promise<CreateUserDto>{
     return this.authService.loginUser(dto)
   }
+  @UseGuards(JwtAuthGuard)
+  @Post('test')
+  test(){
+    return true
+  }
+  // @Post('logout')
+  // @UseGuards(JwtAuthGuard)
+  // async logout(@Request() req) {
+  //   await this.authService.logoutUser(req.user.id);
+  //   req.logout();
+  //   return { message: 'Logged out successfully.' };
+  // }
 }

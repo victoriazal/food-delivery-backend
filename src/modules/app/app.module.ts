@@ -8,6 +8,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
 import { AuthModule } from '../auth/auth.module';
 import { TokenModule } from '../token/token.module';
+import { Dish } from 'src/entities/dish.entity';
+import { DishModule } from '../dish/dish.module';
+import { CouriersModule } from '../couriers/couriers.module';
+import { Courier } from 'src/entities/courier.entity';
 
 @Module({
   imports: [
@@ -15,13 +19,13 @@ import { TokenModule } from '../token/token.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        type:'postgres' as 'postgres',
+        type: 'postgres' as 'postgres',
         host: configService.get<'string'>('TYPEORM_HOST'),
         username: configService.get<string>('TYPEORM_USERNAME'),
         password: configService.get<string>('TYPEORM_PASSWORD'),
         database: configService.get<string>('TYPEORM_DATABASE'),
         port: configService.get<number>('TYPEORM_PORT'),
-        entities: [User],
+        entities: [User, Dish,Courier],
         synchronize: false,
         autoLoadEntities: true,
       })
@@ -30,8 +34,10 @@ import { TokenModule } from '../token/token.module';
       load: [configurations]
     }),
     UserModule,
-  AuthModule,
-  TokenModule],
+    AuthModule,
+    TokenModule,
+    DishModule,
+  CouriersModule],
   controllers: [AppController],
   providers: [AppService],
 })
