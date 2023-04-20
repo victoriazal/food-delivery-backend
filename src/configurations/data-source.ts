@@ -1,9 +1,11 @@
-import "reflect-metadata"
-import { DataSource } from "typeorm"
-import { User } from "../entities/user.entity"
-import { ConfigService } from "@nestjs/config"
-import './dotenv'
-import * as path from 'path'
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import { User } from "../entities/user.entity";
+import { ConfigService } from "@nestjs/config";
+import './dotenv';
+import * as path from 'path';
+import { Dish } from "../entities/dish.entity";
+import { Courier } from "../entities/courier.entity";
 
 const entitiesPath = path.join(__dirname, '..', 'models/**/*.entity.ts');
 
@@ -18,7 +20,7 @@ export const AppDataSource = new DataSource({
   port: configService.get<number>('TYPEORM_PORT'),
   synchronize: false,
   logging: false,
-  entities: [User],
+  entities: [User, Dish, Courier],
   migrations: ["*.ts"],
-  subscribers: [],
-})
+  subscribers: []
+});
