@@ -17,16 +17,5 @@ export class AuthController {
   login(@Body() dto:UserLoginDto): Promise<CreateUserDto>{
     return this.authService.loginUser(dto)
   }
-  @UseGuards(JwtAuthGuard)
-  @Post('test')
-  test(){
-    return true
-  }
-  // @Post('logout')
-  // @UseGuards(JwtAuthGuard)
-  // async logout(@Request() req) {
-  //   await this.authService.logoutUser(req.user.id);
-  //   req.logout();
-  //   return { message: 'Logged out successfully.' };
-  // }
+  
 }

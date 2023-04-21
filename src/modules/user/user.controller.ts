@@ -1,6 +1,6 @@
-import { Body, Controller, Patch, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Patch, Post, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
-import { UpdateUserDto } from './dto/user.dto';
+import { addFavoriteDish, UpdateUserDto } from './dto/user.dto';
 
 import { UserService } from './user.service';
 
@@ -13,5 +13,9 @@ export class UserController {
   updateUser(@Body() updateUserDto: UpdateUserDto, @Req() request) {
     const user = request.user
     console.log(user)
+  }
+  @Post('like')
+  like(@Body() dto: addFavoriteDish): Promise<addFavoriteDish> {
+    return this.userService.saveFavoriteDish(dto)
   }
 }

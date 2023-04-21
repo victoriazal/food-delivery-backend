@@ -2,14 +2,21 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
-import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
+import { addFavoriteDish, CreateUserDto, UpdateUserDto } from './dto/user.dto';
 import * as bcrypt from 'bcrypt'
+import { FavoriteDish } from 'src/entities/favoriteDishes.entity';
+import { Dish } from 'src/entities/dish.entity';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
+    @InjectRepository(FavoriteDish)
+    private favoriteDishesRepository: Repository<FavoriteDish>,
+    @InjectRepository(Dish)
+    private dishesRepository: Repository<Dish>,
+
   ) { }
 
   async hashPassword(password) {
@@ -22,15 +29,32 @@ export class UserService {
   async findUserById(id: number) {
     return this.usersRepository.findOne({ where: { id: id } })
   }
-  async createUser(dto: CreateUserDto): Promise<CreateUserDto> {
+  async createUser(dto: CreateUserDto): Promise<User> {
     dto.password = await this.hashPassword(dto.password)
-    this.usersRepository.save({
+    const createdUser=this.usersRepository.save({
       username: dto.username,
       email: dto.email,
       password: dto.password,
     })
-    return dto
+    return createdUser
   }
+  async saveFavoriteDish(dto: addFavoriteDish): Promise<addFavoriteDish> {
+    // searching for user with id of the logged in user and the dish this user liked
+    const user = await this.usersRepository.findOne({ where: { id: dto.userId } });
+    const dish = await this.dishesRepository.findOne({ where: { id: dto.dishId } });
+    if (!user || !dish) {
+      throw new Error('User or dish not found');
+    }
+
+    const favoriteDish = new FavoriteDish();
+    favoriteDish.user = user;
+    favoriteDish.dish = dish;
+
+    await this.favoriteDishesRepository.save(favoriteDish);
+    return dto;
+  }
+
+
   async updateUser(id: number, dto: UpdateUserDto): Promise<User> {
     const user = await this.findUserById(id);
     if (!user) {
@@ -42,18 +66,14 @@ export class UserService {
     Object.assign(user, dto);
     return this.usersRepository.save(user);
   }
-  
-  // how not to show password
-  // async publicUser(email:string):Promise<User>{
-  //   try{
-  //     return  this.usersRepository.findOne({
-  //       where:{email},
-  //       attributes:{exclude:['password']},
-  //     })
-  //   }catch(e){
-  //     throw new Error(e)
-  //   }
-  // }
+
+  async publicUser(email: string): Promise<User> {
+    return this.usersRepository.findOne({
+      where: { email },
+      select: ['id', 'username', 'email'], // exclude password field
+    });
+  }
+
 }
 
 
