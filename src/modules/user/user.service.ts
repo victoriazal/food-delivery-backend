@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
-import { Repository } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 import { addFavoriteDish, CreateUserDto, UpdateUserDto } from './dto/user.dto';
 import * as bcrypt from 'bcrypt'
 import { FavoriteDish } from 'src/entities/favoriteDishes.entity';
@@ -45,11 +45,9 @@ export class UserService {
     if (!user || !dish) {
       throw new Error('User or dish not found');
     }
-
     const favoriteDish = new FavoriteDish();
     favoriteDish.user = user;
     favoriteDish.dish = dish;
-
     await this.favoriteDishesRepository.save(favoriteDish);
     return dto;
   }
@@ -74,6 +72,13 @@ export class UserService {
     });
   }
 
+ 
+  async getFavoriteDishesByUserId(userId: number): Promise<FavoriteDish[]> {
+    return this.favoriteDishesRepository.find({
+      where: { user: { id: userId } },
+      relations: ['dish'],
+    });
+  }
 }
 
 

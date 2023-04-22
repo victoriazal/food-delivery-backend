@@ -6,16 +6,16 @@ import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService:AuthService){}
+  constructor(private readonly authService: AuthService) { }
 
   @Post('register')
-  register(@Body() dto:CreateUserDto): Promise<CreateUserDto>{
+  register(@Body() dto: CreateUserDto): Promise<CreateUserDto> {
     return this.authService.registerUsers(dto)
   }
 
   @Post('login')
-  login(@Body() dto:UserLoginDto): Promise<CreateUserDto>{
+  login(@Body() dto: UserLoginDto): Promise<CreateUserDto> {
     return this.authService.loginUser(dto)
   }
-  
+
 }

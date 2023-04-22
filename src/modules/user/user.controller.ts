@@ -1,4 +1,5 @@
-import { Body, Controller, Patch, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Req, UseGuards } from '@nestjs/common';
+import { FavoriteDish } from 'src/entities/favoriteDishes.entity';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { addFavoriteDish, UpdateUserDto } from './dto/user.dto';
 
@@ -12,10 +13,14 @@ export class UserController {
   @Patch()
   updateUser(@Body() updateUserDto: UpdateUserDto, @Req() request) {
     const user = request.user
-    console.log(user)
   }
   @Post('like')
   like(@Body() dto: addFavoriteDish): Promise<addFavoriteDish> {
     return this.userService.saveFavoriteDish(dto)
+  }
+
+  @Get(':userId/favorite-dishes')
+  async getUserFavoriteDishes(@Param('userId') userId: number): Promise<FavoriteDish[]> {
+    return this.userService.getFavoriteDishesByUserId(userId);
   }
 }
