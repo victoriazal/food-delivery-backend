@@ -12,4 +12,5 @@ export class FavoriteDish {
 
   @ManyToOne(() => Dish, dish => dish.favoriteDishes)
   dish: Dish;
+
 }

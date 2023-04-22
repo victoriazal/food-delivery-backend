@@ -20,4 +20,5 @@ export class User {
 
   @OneToMany(() => FavoriteDish, (favoriteDish) => favoriteDish.user)
   favoriteDishes: FavoriteDish[];
+  
 }

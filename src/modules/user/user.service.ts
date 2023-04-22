@@ -51,6 +51,19 @@ export class UserService {
     await this.favoriteDishesRepository.save(favoriteDish);
     return dto;
   }
+  async deleteFavoriteDish(dto: addFavoriteDish): Promise<addFavoriteDish> {
+    // searching for user with id of the logged in user and the dish this user liked
+    const user = await this.usersRepository.findOne({ where: { id: dto.userId } });
+    const dish = await this.dishesRepository.findOne({ where: { id: dto.dishId } });
+    if (!user || !dish) {
+      throw new Error('User or dish not found');
+    }
+    const favoriteDish = new FavoriteDish();
+    favoriteDish.user = user;
+    favoriteDish.dish = dish;
+    await this.favoriteDishesRepository.delete(favoriteDish);
+    return dto;
+  }
 
 
   async updateUser(id: number, dto: UpdateUserDto): Promise<User> {
@@ -80,5 +93,3 @@ export class UserService {
     });
   }
 }
-
-

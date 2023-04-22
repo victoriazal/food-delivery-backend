@@ -18,6 +18,10 @@ export class UserController {
   like(@Body() dto: addFavoriteDish): Promise<addFavoriteDish> {
     return this.userService.saveFavoriteDish(dto)
   }
+  @Post('dislike')
+  dislike(@Body() dto: addFavoriteDish): Promise<addFavoriteDish> {
+    return this.userService.deleteFavoriteDish(dto)
+  }
 
   @Get(':userId/favorite-dishes')
   async getUserFavoriteDishes(@Param('userId') userId: number): Promise<FavoriteDish[]> {
