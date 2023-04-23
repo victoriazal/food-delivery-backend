@@ -13,6 +13,7 @@ import { DishModule } from '../dish/dish.module';
 import { CouriersModule } from '../couriers/couriers.module';
 import { Courier } from 'src/entities/courier.entity';
 import { FavoriteDish } from 'src/entities/favoriteDishes.entity';
+import { Order } from 'src/entities/orders.entity';
 
 @Module({
   imports: [
@@ -26,7 +27,7 @@ import { FavoriteDish } from 'src/entities/favoriteDishes.entity';
         password: configService.get<string>('TYPEORM_PASSWORD'),
         database: configService.get<string>('TYPEORM_DATABASE'),
         port: configService.get<number>('TYPEORM_PORT'),
-        entities: [User, Dish,Courier,FavoriteDish],
+        entities: [User, Dish,Courier,FavoriteDish,Order],
         synchronize: false,
         autoLoadEntities: true,
       })

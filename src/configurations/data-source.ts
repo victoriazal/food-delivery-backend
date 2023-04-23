@@ -7,6 +7,7 @@ import * as path from 'path';
 import { Dish } from "../entities/dish.entity";
 import { Courier } from "../entities/courier.entity";
 import { FavoriteDish } from "../entities/favoriteDishes.entity";
+import { Order } from "../entities/orders.entity";
 
 const entitiesPath = path.join(__dirname, '..', 'models/**/*.entity.ts');
 
@@ -21,7 +22,7 @@ export const AppDataSource = new DataSource({
   port: configService.get<number>('TYPEORM_PORT'),
   synchronize: false,
   logging: false,
-  entities: [User, Dish, Courier, FavoriteDish],
+  entities: [User, Dish, Courier, FavoriteDish,Order],
   migrations: ["*.ts"],
   subscribers: []
 });

@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { TokenService } from './token.service';
 
 @Module({
-  providers: [TokenService,JwtService],
-  exports:[TokenService]
+  providers: [TokenService, JwtService],
+  exports: [TokenService]
 })
-export class TokenModule {}
+export class TokenModule { }
