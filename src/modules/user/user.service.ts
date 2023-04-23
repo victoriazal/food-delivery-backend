@@ -30,14 +30,14 @@ export class UserService {
     return this.usersRepository.findOne({ where: { id: id } })
   }
   async createUser(dto: CreateUserDto): Promise<User> {
-    dto.password = await this.hashPassword(dto.password)
-    const createdUser = this.usersRepository.save({
-      username: dto.username,
-      email: dto.email,
-      password: dto.password,
-    })
-    return createdUser
+    const hashedPassword = await this.hashPassword(dto.password);
+    const newUser = new User();
+    newUser.username = dto.username;
+    newUser.email = dto.email;
+    newUser.password = hashedPassword;
+    return this.usersRepository.save(newUser);
   }
+  
   async saveFavoriteDish(dto: addFavoriteDish): Promise<addFavoriteDish> {
     // searching for user with id of the logged in user and the dish this user liked
     const user = await this.usersRepository.findOne({ where: { id: dto.userId } });
