@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Dish } from './dish.entity';
 import { User } from './user.entity';
 
@@ -12,5 +12,4 @@ export class FavoriteDish {
 
   @ManyToOne(() => Dish, dish => dish.favoriteDishes)
   dish: Dish;
-
 }
