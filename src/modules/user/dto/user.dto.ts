@@ -1,4 +1,4 @@
-import { IsString } from "@nestjs/class-validator";
+import { IsNumber, IsString } from "@nestjs/class-validator";
 
 export class CreateUserDto {
    @IsString()
@@ -16,4 +16,11 @@ export class UpdateUserDto {
    username: string;
    @IsString()
    password: string;
+}
+
+export class addFavoriteDish {
+   @IsNumber()
+   userId: number;
+   @IsNumber()
+   dishId: number;
 }

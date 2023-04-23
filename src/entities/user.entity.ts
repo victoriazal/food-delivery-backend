@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { FavoriteDish } from './favoriteDishes.entity';
 
 @Entity({name: 'Users'})
 export class User {
@@ -16,4 +17,8 @@ export class User {
 
   @Column({ default: null })
   refreshToken?: string;
+
+  @OneToMany(() => FavoriteDish, (favoriteDish) => favoriteDish.user)
+  favoriteDishes: FavoriteDish[];
+  
 }

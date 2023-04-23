@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { FavoriteDish } from './favoriteDishes.entity';
 
 @Entity({name: 'Dish'})
 export class Dish {
@@ -25,4 +26,9 @@ export class Dish {
 
   @Column()
   image: string;
+
+  @OneToMany(() => FavoriteDish, (favoriteDish) => favoriteDish.user)
+  favoriteDishes: FavoriteDish[];
+
+
 }

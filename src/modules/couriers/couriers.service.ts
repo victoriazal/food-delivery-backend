@@ -8,7 +8,7 @@ export class CouriersService {
   constructor(
     @InjectRepository(Courier)
     private readonly courierRepository: Repository<Courier>,
-  ) {}
+  ) { }
 
   async findAllCouriers(): Promise<Courier[]> {
     return await this.courierRepository.find();

@@ -8,7 +8,7 @@ export class DishService {
   constructor(
     @InjectRepository(Dish)
     private readonly dishRepository: Repository<Dish>,
-  ) {}
+  ) { }
 
   async findAllDishes(): Promise<Dish[]> {
     return await this.dishRepository.find();
@@ -16,7 +16,7 @@ export class DishService {
   async init() {
     const jsonData = fs.readFileSync('src/moks/dishes.json', 'utf8');
     const dishes = JSON.parse(jsonData);
-    for (const dish of dishes){
+    for (const dish of dishes) {
       const newDish = this.dishRepository.create(dish);
       await this.dishRepository.save(newDish);
     }

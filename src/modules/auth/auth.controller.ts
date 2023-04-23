@@ -6,27 +6,16 @@ import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService:AuthService){}
+  constructor(private readonly authService: AuthService) { }
 
   @Post('register')
-  register(@Body() dto:CreateUserDto): Promise<CreateUserDto>{
+  register(@Body() dto: CreateUserDto): Promise<CreateUserDto> {
     return this.authService.registerUsers(dto)
   }
 
   @Post('login')
-  login(@Body() dto:UserLoginDto): Promise<CreateUserDto>{
+  login(@Body() dto: UserLoginDto): Promise<CreateUserDto> {
     return this.authService.loginUser(dto)
   }
-  @UseGuards(JwtAuthGuard)
-  @Post('test')
-  test(){
-    return true
-  }
-  // @Post('logout')
-  // @UseGuards(JwtAuthGuard)
-  // async logout(@Request() req) {
-  //   await this.authService.logoutUser(req.user.id);
-  //   req.logout();
-  //   return { message: 'Logged out successfully.' };
-  // }
+
 }
