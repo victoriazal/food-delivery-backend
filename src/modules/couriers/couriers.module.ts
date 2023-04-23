@@ -11,7 +11,7 @@ import { CouriersService } from './couriers.service';
   providers: [CouriersService],
 })
 export class CouriersModule implements OnModuleInit {
-  constructor(private readonly couriersService: CouriersService) {}
+  constructor(private readonly couriersService: CouriersService) { }
   async onModuleInit() {
     await this.couriersService.init();
   }

@@ -31,7 +31,7 @@ export class UserService {
   }
   async createUser(dto: CreateUserDto): Promise<User> {
     dto.password = await this.hashPassword(dto.password)
-    const createdUser=this.usersRepository.save({
+    const createdUser = this.usersRepository.save({
       username: dto.username,
       email: dto.email,
       password: dto.password,
@@ -85,7 +85,7 @@ export class UserService {
     });
   }
 
- 
+
   async getFavoriteDishesByUserId(userId: number): Promise<FavoriteDish[]> {
     return this.favoriteDishesRepository.find({
       where: { user: { id: userId } },
