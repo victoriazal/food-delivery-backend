@@ -20,6 +20,7 @@ $ npm run start:prod
 ```
 
 ## DB
+```
 $ docker-compose up -d
 $ npm run migration:run
 
